@@ -8,9 +8,14 @@
 	圆(绘制模式:"fill"|"line",圆心x座标,圆心y座标,半径,线段数:越大越平滑)
 		love.graphics.circle("line", x, y, radius, segments )
 
+	椭圆(绘制模式:"fill"|"line",圆心x坐标,圆心y坐标,宽半径(宽的一半),高半径(高的一半),线段数:越大越平滑)	
+		love.graphics.ellipse("line", x, y, radiusx, radiusy )
+
 	清除()--在love.draw之前的love.run中自动调用，或自己写love.run时被用到
 		love.graphics.clear()
 		love.graphics.clear(r, g, b, a ) since 0.10.0
+
+	忽略(颜色:true|false,模板:true|false)
 
 	画(物体:图片|画布|精灵组|粒子系统|网格,x座标,y座标,旋转弧度,x轴缩放,y轴缩放,x轴原点偏移值,y轴原点偏移值,x轴剪切系数,y轴剪切系数)
 
@@ -25,7 +30,7 @@
 
 	点(x座标, y座标, ... )
 		--参数可以用table
-		love.graphics.point(x1, y1, x2, y2, ... )
+		love.graphics.points(x1, y1, x2, y2, ... )
 
 	多边形(绘制模式, ... )
 		--参数可以用table存放所有顶点，再传入
@@ -102,6 +107,15 @@
 		spriteBatch = love.graphics.newSpriteBatch( image, size, usagehint )
 		spriteBatch = love.graphics.newSpriteBatch( texture, size, usagehint )
 
+	新建字体(字体,文本:nil)
+		text = love.graphics.newText(font, textstring)
+
+	新建视频(文件名,读取音频)
+		video = love.graphics.newVideo(filename, loadaudio:nil)
+	新建视频(视频流,读取音频)
+		video = love.graphics.newVideo( videostream, loadaudio:nil)
+
+
 ==图形状态==
 
 	获取背景颜色()
@@ -155,10 +169,6 @@
 	获取点尺寸()
 		--@返回 点尺寸
 		size = love.graphics.getPointSize()
-
-	获取点风格()
-		--@返回 点风格:"rough"粗糙|"smooth"平滑
-		style = love.graphics.getPointStyle()
 
 	获取渲染器信息()
 		--@返回 名称:"OpenGL"|"OpenGL ES",版本,显卡厂商,显卡名
@@ -223,12 +233,6 @@
 	设置字体(字体)
 		love.graphics.setFont( font )
 
-	设置反向模具(模具函数)
-	设置反向模具()--释放使用中的模具
-		--详见https://love2d.org/wiki/love.graphics.setInvertedStencil
-		love.graphics.setInvertedStencil(stencilFunction)
-		love.graphics.setInvertedStencil()
-
 	设置线条连接(连接风格:"miter"斜接|"none"无|"bevel"斜面)
 		--详见https://love2d.org/wiki/LineJoin
 		love.graphics.setLineJoin("miter"|"none"|"bevel")
@@ -242,9 +246,6 @@
 	设置点尺寸(尺寸)
 		love.graphics.setPointSize( 2 )
 
-	设置点风格(风格:"rough"粗糙|"smooth"平滑)
-		love.graphics.setPointStyle( "rough"|"smooth" )
-
 	设置剪裁框(左上角x座标,左上角y座标,宽,高)
 		--详见https://love2d.org/wiki/love.graphics.setScissor
 		--限制graphics的绘画区域，包括love.graphics.clear
@@ -254,12 +255,6 @@
 	设置着色器()--禁用着色器,允许未过滤的绘画操作
 		love.graphics.setShader( shader )
 		love.graphics.setShader()
-
-	设置模具(模具函数)
-	设置模具()--释放使用中的模具
-		--详见https://love2d.org/wiki/love.graphics.setStencil的例子
-		myStencil = love.graphics.setStencil( stencilFunction )
-		love.graphics.setStencil( )
 
 	设置线框(使用与否:boolean值)--只用于调试，勿作他用
 		love.graphics.setWireframe( enable )
@@ -311,4 +306,3 @@
 	获取窗口宽度()
 		--@返回 宽
 		width = love.graphics.getWidth()
-
