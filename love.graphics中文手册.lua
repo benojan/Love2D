@@ -1,4 +1,6 @@
 ==配置函数==
+
+--文件 conf.lua
 function love.conf(t)
     t.identity = nil                    -- The name of the save directory (string)
     t.version = "0.10.1"                -- 游戏使用的LÖVE引擎版本 (string)
@@ -42,7 +44,7 @@ function love.conf(t)
     t.modules.thread = true             -- Enable the thread module (boolean)
 end
 
-
+--文件 main.lua
 ==绘图方法==
 
 	弧(绘制模式:"fill"|"line",x座标,y座标,半径,起始弧度:x轴正方向为0,终止弧度:顺时针,线段数:越大则弧线越平滑)
