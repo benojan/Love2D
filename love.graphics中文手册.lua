@@ -335,7 +335,7 @@ end
 		--详见https://love2d.org/wiki/love.graphics.shear
 		love.graphics.shear( kx, ky )
 
-	翻转(相对x坐标,相对y坐标)
+	平移(x坐标,y坐标)
 		love.graphics.translate( dx, dy )
 
 ==窗口==
